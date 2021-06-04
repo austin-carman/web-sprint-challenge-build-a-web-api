@@ -1,6 +1,6 @@
 const Projects = require('../projects/projects-model');
 
-function validateProjectId(req, res, next) {
+function validateId(req, res, next) {
    Projects.get(req.params.id)
     .then(project => {
         if(!project) {
@@ -36,7 +36,7 @@ function errHandling(err, req, res, next) {
 }
 
 module.exports = {
-    validateProjectId,
+    validateId,
     validateProject,
     errHandling
 }
