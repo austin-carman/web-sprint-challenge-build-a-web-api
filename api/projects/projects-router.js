@@ -28,16 +28,28 @@ router.post('/', validateProject, (req, res, next) => {
         .catch(next)
 });
 
-router.put('/:id', validateProjectId, (req, res, next) => {
-    
+router.put('/:id', validateProjectId, validateProject, (req, res, next) => {
+    Projects.update(req.params.id, req.body)
+        .then(updateProject => {
+            res.json(updateProject)
+        })
+        .catch(next)
 });
 
 router.delete('/:id', validateProjectId, (req, res, next) => {
-    
+    Projects.remove(req.params.id)
+        .then(deleted => {
+            res.json(deleted)
+        })
+        .catch(next)
 });
 
 router.get('/:id/actions', validateProjectId, (req, res, next) => {
-    
+    Projects.get(req.params.id)
+        .then(projectActions => {
+            res.json(projectActions)
+        })
+        .catch(next)
 });
 
 module.exports = router;

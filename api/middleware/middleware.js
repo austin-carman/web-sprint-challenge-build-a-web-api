@@ -19,14 +19,12 @@ function validateProject(req, res, next) {
     const { name, description } = req.body
         if(!name || !description) {
             res.status(400).json({
-                message: 'new project must have name and description in body'
+                message: 'Must have name and description in body'
             })
         } else {
             next()
         }
 }
-
-
 
 function errHandling(err, req, res, next) {
     console.log('Error handling middleware');
