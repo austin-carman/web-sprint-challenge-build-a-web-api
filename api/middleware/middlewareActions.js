@@ -31,7 +31,25 @@ function validateAction(req, res, next) {
     }
 }
 
+function validateActionPut(req, res, next) {
+    const { project_id, description, notes } = req.body
+    if(!project_id || !description || !notes) {
+        res.status(400).json({
+            message: 'must provide project_id, description, and notes'
+        })
+    } else {
+        req.action = {
+            project_id: req.body.project_id,
+            description: req.body.description,
+            notes: req.body.notes,
+            completed: true
+        }
+        next()
+    }
+}
+
 module.exports = {
     validateActionsId,
     validateAction,
+    validateActionPut
 }

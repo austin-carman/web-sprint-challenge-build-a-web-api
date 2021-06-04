@@ -16,12 +16,17 @@ function validateId(req, res, next) {
 }
 
 function validateProject(req, res, next) {
-    const { name, description } = req.body
+    const { name, description, completed } = req.body
         if(!name || !description) {
             res.status(400).json({
                 message: 'Must have name and description in body'
             })
         } else {
+            req.project = { 
+                name: req.body.name.trim(),
+                description: req.body.description.trim(),
+                completed: true
+            }
             next()
         }
 }
