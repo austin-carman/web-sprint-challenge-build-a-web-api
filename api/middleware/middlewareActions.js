@@ -25,7 +25,7 @@ function validateAction(req, res, next) {
         req.action = {
             project_id: req.body.project_id,
             description: req.body.description,
-            notes: req.body.notes
+            notes: req.body.notes,
         }
         next()
     }
