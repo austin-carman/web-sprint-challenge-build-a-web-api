@@ -46,8 +46,8 @@ router.delete('/:id', validateProjectId, (req, res, next) => {
 
 router.get('/:id/actions', validateProjectId, (req, res, next) => {
     Projects.get(req.params.id)
-        .then(projectActions => {
-            res.json(projectActions)
+        .then(project => {
+            res.json(project.actions)
         })
         .catch(next)
 });
