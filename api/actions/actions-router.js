@@ -28,7 +28,15 @@ router.post('/', validateAction, (req, res, next) => {
 })
 
 router.put('/:id', validateActionsId, validateAction, (req, res, next) => {
+   
+})
 
+router.delete('/:id', validateActionsId, (req, res, next) => {
+    Actions.remove(req.params.id)
+        .then(numberDeleted => {
+            res.json(req.action)
+        })
+        .catch(next)
 })
 
 
